@@ -1,0 +1,28 @@
+<% layout ("/layout/boilerplate") %>
+<div class="main_div">
+
+    <h2>LogIn</h2>
+    <div class="div_auth">
+        <form method="post" action="/login" novalidate class="needs-validation">
+            <br>
+            <div>
+                <input type="text" name="username" id="" placeholder="Enter the username..." class="form-control" required>  
+                <div class="invalid-feedback">
+                    Please enter username.
+                </div>
+            </div>
+            <br>
+
+    
+
+            <div>
+                <input type="password" name="password" placeholder="Enter your password..." required class="form-control">
+                <div class="invalid-feedback">
+                    Please enter the password.
+                </div>
+            </div>
+
+            <button class="edit_btn">LogIn</button>
+        </form>
+    </div>
+</div>

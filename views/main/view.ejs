@@ -1,0 +1,97 @@
+<% layout ("/layout/boilerplate") %>
+<div class="main_div">
+<div class="card">
+  <div class="card-header">
+    <img src="<%= post.author.image %>" class="profile_image" alt="">
+
+    <div class="post_info">
+      <a class="username" href=""><h4><%= post.author.username %></h4></a>
+      
+      
+      <p id="timeAndDate"><%= post.date.toLocaleString()%></p>
+      
+    </div>
+    
+  </div>
+  <div class="card-body">
+    <figure>
+      <blockquote class="blockquote">
+        <p> <%= post.content %></p>
+      </blockquote>
+    </figure>
+    <br>
+
+    <!-- <form action="">
+      <button class="like-btn"><i class="fa-regular fa-thumbs-up"></i> <%= post.likes %></button>
+    </form> -->
+
+    
+
+    <br>
+    <% if(currentUser && currentUser._id.equals(post.author._id)){ %>
+    <form method="get" action="/edit/<%= post.id %>">
+        <button class="edit_btn">Edit</button>
+    </form>
+
+    <form method="post" action="/delete/<%= post.id %>?_method=DELETE">
+        <button class="delete_btn">Delete</button>
+    </form>
+    <% } %>
+  </div>
+</div>
+
+
+<hr>
+<h3 id="comment_heading">Comments</h3>
+<br>
+<% if(currentUser){ %>
+<div class="comment_form_div">
+  <form action="/post/<%= post.id %>/comment" method="post" class="needs-validation" novalidate >
+    
+    
+    
+    <br>  
+    
+    <div>
+        <label for="comment_content" class="form-label">Comment as <%= currentUser.username %></label>
+        <textarea name="comment[comment]" id="inp_comment" class="form-control" placeholder="Comment..."  required></textarea>
+        <div class="invalid-feedback">
+            Please provide content for the comment.
+        </div>
+    </div>
+    <br>
+    <button class="add_comment_btn">Add comment</button>
+  </form>
+</div>
+<% }%>
+
+<hr>
+<div class="comment_div">
+  <% for(let comment of post.comments){ %>
+    <div class="main_comment_div">
+      <div class="comment_div_head">
+        <img src="<%= comment.writer.image %>"  class="profile_image__" alt="">
+        <div class="comment_info">
+          <a href="/view/profile/<%= comment.writer._id %>" class="comment_username" style="text-decoration: none;"><h5><%= comment.writer.username %></h5></a>
+          <p><%= comment.date.toLocaleString()%></p>
+        </div>
+      </div>
+
+      <div class="comment__">
+        <%= comment.comment %>
+      </div>
+      <div class="comment_btn">
+        <form method="post" action="/post/<%= post.id %>/comment/<%= comment.id %>?_method=DELETE">
+          <button class="cmnt_delete_btn">Delete</button>
+        </form>
+      </div>
+    </div>
+  <% } %>
+
+  
+  
+  
+</div>
+
+
+</div>

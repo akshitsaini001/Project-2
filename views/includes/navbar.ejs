@@ -1,0 +1,66 @@
+<body>
+    <nav class="navbar navbar-expand-lg bg-body-tertiary sticky-top">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="/home"><b class="name_1">MAJE</b><B class="name_2">KI</B><b class="name_1">BAAT</b><b class="name_3">.com</b></a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+             <div class="collapse navbar-collapse" id="navbarNavDropdown">
+                <ul class="navbar-nav">
+                    
+                    <% if(!currentUser){ %>
+                    <li class="nav-item small_itm">
+                        <a class="nav-link active" aria-current="page" href="/login">Log In</a>
+                    </li>
+                    
+                    <li class="nav-item small_itm">
+                        <a class="nav-link" href="/signup">Sign Up</a>
+                    </li>
+
+                    <li class="nav-item small_itm">
+                       <a class="nav-link" href="/search">Search <i class="fa-solid fa-magnifying-glass"></i></a>
+                    </li>
+                    <% } %>
+
+                    <% if(currentUser){ %>
+                    <li class="nav-item small_itm">
+                        <a class="nav-link" href="#">Profile</a>
+                    </li>
+                    <li class="nav-item small_itm">
+                        <a class="nav-link" href="/logout">LogOut</a>
+                    </li>
+                    <li class="nav-item small_itm">
+                       <a class="nav-link" href="/search">Search <i class="fa-solid fa-magnifying-glass"></i></a>
+                    </li>
+                    
+                    
+                    <% } %>
+
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Options
+                        </a>
+                        <ul class="dropdown-menu">
+                            <% if(!currentUser){ %>
+                            <li><a class="dropdown-item" href="/login">Log In</a></li>
+                            <li><a class="dropdown-item" href="/signup">Sign Up</a></li>
+                            <li><a href="/search" class="dropdown-item">Search <i class="fa-solid fa-magnifying-glass"></i></a></li>
+                            <% } %>
+                            <% if(currentUser){ %>
+                            <li><a class="dropdown-item" href="/profile/<%=currentUser._id %>">Profile</a></li>
+                            <li><a class="dropdown-item" href="/logout">Logout</a></li>
+                            <li><a href="/search" class="dropdown-item">Search <i class="fa-solid fa-magnifying-glass"></i></a></li>
+                            
+                            <% } %>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <hr>
+    
+    
+
+
+</body>

@@ -1,0 +1,62 @@
+<% layout ("/layout/boilerplate") %>
+<% if(!currentUser) { %>
+<div class="welcome_box">
+  <h3 style="color: #AAB8C2;">Welcome to Maje Ke Baat</h3>
+  <p>This is a social media platform where you can share your thoughts and connect with others. To get started, click on top-left corner and login or signup.</p>
+</div>
+<% } else { %>
+<div class="welcome_box">
+  <h3 style="color: #AAB8C2;">Hey,<b><%= currentUser.username %>!</b>  </h3>
+  <p style="color: #AAB8C2;">Ready to share something new? </p>
+  <br>
+  <form method="post" action="/new" class="needs-validation" novalidate>
+    <div>
+      <textarea name="post[content]" class="form-control" style="height: 150px;" id="" placeholder="Time for a 'Maje Ki Baat' (Fun Fact/Great Thing)? Go ahead..." required></textarea>
+      <div class="invalid-feedback">
+        Please enter some content before sharing.
+      </div>
+    </div>
+    <button class="add_post_btn">Share</button>
+  </form>
+</div>
+<% } %>
+
+
+<% for (post of posts) { %>
+<div class="card">
+  <div class="card-header">
+    <img src="<%= post.author.image %>" class="profile_image" alt="">
+
+    <div class="post_info">
+      <a href="/view/profile/<%= post.author._id %>" class="username"><h4><%= post.author.username %></h4></a>
+      
+      
+      <p id="timeAndDate"><%= post.date.toLocaleString() %></p>
+      <br>
+      
+    </div>
+    
+  </div>
+  <div class="card-body">
+    <figure>
+      <blockquote class="blockquote">
+        <p> <%= post.content %></p>
+        
+      </blockquote>
+    </figure>
+    <br>
+
+
+
+    
+
+    <form method="get" action="/view/<%= post.id %>">
+      <button class="like-btn">View</button>
+    </form>
+  </div>
+</div>
+
+
+<% } %>
+
+<br><br><br><br><br><br><br><br><br><br><br><br><br>

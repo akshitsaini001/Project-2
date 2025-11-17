@@ -1,0 +1,15 @@
+<% layout ("/layout/boilerplate") %>
+<div class="main_div">
+    <h2>Edit Comment</h2>
+    <form method="post" action="/comment/edit/<%= comment.id %>?_method=PUT" novalidate class="needs-validation">
+        <textarea name="comment" id="" class="form-control" required>
+
+            <%= comment.comment %>
+        </textarea>
+        <div class="invalid-feedback">
+            Please provide content for the post.
+        </div>
+
+        <button class="edit_btn">Edit</button>
+    </form>
+</div>

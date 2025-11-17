@@ -1,0 +1,62 @@
+<% layout ("/layout/boilerplate") %>
+<div class="main_div">
+    <h2>SignUp</h2>
+    <div class="div_auth">
+        <form method="post" action="/signup" novalidate class="needs-validation">
+            <br>
+            <div>
+                <input type="text" name="username" id="" placeholder="Enter the username..." class="form-control" required>  
+                <div class="invalid-feedback">
+                    Please enter username.
+                </div>
+            </div>
+            <br>
+
+            <div>
+                <input type="text" name="email" placeholder="Enter you email..." required id="" class="form-control">
+                <div class="invalid-feedback">
+                    Please enter your email.
+
+                </div>
+            </div>
+            <br>
+
+            <div>
+                <input type="password" name="password" placeholder="Enter your password..." required class="form-control">
+                <div class="invalid-feedback">
+                    Please enter the password.
+                </div>
+            </div>
+            <br>
+
+            <div>
+                <h3>Select your favourite subject.</h3>
+                
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="subject" value="maths" id="radioDefault2" checked>
+                    <label class="form-check-label" for="radioDefault2">
+                        Maths
+                    </label>
+                </div>
+                <br>
+
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="subject" value="physics" id="radioDefault1">
+                    <label class="form-check-label" for="radioDefault1">
+                        Physics
+                    </label>
+                </div>
+                <br>
+
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="subject" value="chemistry" id="radioDefault">
+                    <label class="form-check-label" for="radioDefault">
+                        Chemistry
+                    </label>
+                </div>
+            </div>
+
+            <button class="edit_btn">SignUp</button>
+        </form>
+    </div>
+</div>

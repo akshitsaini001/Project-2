@@ -1,0 +1,53 @@
+<% layout ("/layout/boilerplate") %>
+<div class="main_div">
+    <div class="profile_header">
+        <img src="<%= user.image %>" class="profile_image_large" alt="">
+        <div class="profile_info">
+            <h2><%= user.username %></h2>
+            <p><%= user.email %></p>
+        </div>
+    </div>
+
+    <h1 class="post__">
+        POSTS
+        
+    </h1>
+
+    <%for (post of user.posts) { %>
+        <div class="card">
+  <div class="card-header">
+    <img src="<%= post.author.image %>" class="profile_image" alt="">
+
+    <div class="post_info">
+      <a href="/profile/<%= post.author._id %>" class="username"><h4><%= post.author.username %></h4></a>
+      
+      
+      <p id="timeAndDate"><%= post.date.toLocaleString() %></p>
+      <br>
+      
+    </div>
+    
+  </div>
+  <div class="card-body">
+    <figure>
+      <blockquote class="blockquote">
+        <p> <%= post.content %></p>
+        
+      </blockquote>
+    </figure>
+    <br>
+
+
+
+    
+
+    <form method="get" action="/view/<%= post.id %>">
+      <button class="like-btn">View</button>
+    </form>
+  </div>
+</div>
+
+
+    <% } %>
+    
+</div>
