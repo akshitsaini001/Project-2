@@ -33,7 +33,7 @@ const session = require("express-session");
 const MongoStore = require("connect-mongo");
 
 const store = MongoStore.create({
-    mongoUrl: User.db,
+    mongoUrl: dburl,
     crypto: {
         secret: process.env.SECRET_KEY
     },
