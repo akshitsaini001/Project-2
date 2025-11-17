@@ -112,5 +112,6 @@ app.use((err, req, res, next) => {
 })
 
 app.listen(port , ()=>{
-    console.log("App is listening on port 8080")
+    console.log("App is listening on port 8080");
+    res.redirect("/home");
 });
