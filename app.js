@@ -27,7 +27,8 @@ const ExpressError = require("./ExpressError.js");
 
 const cookieParser = require("cookie-parser");
 app.use(cookieParser());
- 
+
+const dburl = process.env.ATLASDB_URL; 
 const flash = require("connect-flash");
 const session = require("express-session");
 const MongoStore = require("connect-mongo");
@@ -72,7 +73,7 @@ app.use((req , res , next)=>{
     next();
 })
 
-const dburl = process.env.ATLASDB_URL;
+
 
 const mongoose = require("mongoose");
 
