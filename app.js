@@ -36,7 +36,7 @@ main()
         console.log("Connected to Database.")
     }).catch(err => console.log(err));
 
-    
+
 async function main() {
     await mongoose.connect(dburl);
 }
@@ -121,4 +121,3 @@ app.use((err, req, res, next) => {
     let { status = 500, message = "Something went wrong" } = err;
     res.status(status).render("main/error.ejs" , {message});
 })
-
