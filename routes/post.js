@@ -5,7 +5,7 @@ const listingController = require("../controller/post.js");
 
 
 //For home page and show all posts
-router.get("/home" , wrapAsync (listingController.index));
+router.get("/" , wrapAsync (listingController.index));
 
 
 
