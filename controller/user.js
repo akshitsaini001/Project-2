@@ -39,7 +39,7 @@ module.exports.signUp = async(req , res)=>{
 
 //render login form
 module.exports.renderLoginForm = (req , res)=>{
-    res.render("main/loginForm.ejs");
+    res.render("main/logIn.ejs");
 };
 
 
