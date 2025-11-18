@@ -27,8 +27,27 @@ const ExpressError = require("./ExpressError.js");
 
 const cookieParser = require("cookie-parser");
 app.use(cookieParser());
+const dburl = process.env.ATLASDB_URL;
 
-const dburl = process.env.ATLASDB_URL; 
+const mongoose = require("mongoose");
+
+main()
+    .then(()=>{
+        console.log("Connected to Database.")
+    }).catch(err => console.log(err));
+
+    
+async function main() {
+    await mongoose.connect(dburl);
+}
+
+const postRouter = require("./routes/post.js");
+const commentRouter = require("./routes/comment.js");
+const userRouter =require("./routes/user.js");
+const profileRouter = require("./routes/profile.js");
+const searchRouter = require("./routes/search.js");
+
+ 
 const flash = require("connect-flash");
 const session = require("express-session");
 const MongoStore = require("connect-mongo");
@@ -66,6 +85,17 @@ passport.serializeUser(User.serializeUser());
 passport.deserializeUser(User.deserializeUser());
 
 
+
+
+
+
+
+const port = 8080;
+app.listen(port , ()=>{
+    console.log("App is listening on port 8080");
+    
+});
+
 app.use((req , res , next)=>{
     res.locals.success = req.flash("success");
     res.locals.error = req.flash("error");
@@ -74,25 +104,6 @@ app.use((req , res , next)=>{
 })
 
 
-
-const mongoose = require("mongoose");
-
-main()
-    .then(()=>{
-        console.log("Connected to Database.")
-    }).catch(err => console.log(err));
-        async function main() {
-        await mongoose.connect(dburl);
-    }
-
-
-const port = 8080;
-
-const postRouter = require("./routes/post.js");
-const commentRouter = require("./routes/comment.js");
-const userRouter =require("./routes/user.js");
-const profileRouter = require("./routes/profile.js");
-const searchRouter = require("./routes/search.js");
 
 
 app.use("/", postRouter);
@@ -111,7 +122,3 @@ app.use((err, req, res, next) => {
     res.status(status).render("main/error.ejs" , {message});
 })
 
-app.listen(port , ()=>{
-    console.log("App is listening on port 8080");
-    
-});
